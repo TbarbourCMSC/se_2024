@@ -1,0 +1,79 @@
+*
+{
+    font-family: Noto Sans,sans-serif;
+    font-size: 15px;
+    background-color: #505050;
+   
+}
+main 
+{
+    width: 50%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+table {
+    margin: 50px auto;
+    color:whitesmoke;
+    background-color: #131313;
+}
+
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid #000;
+    background-color: #131313;
+}
+
+th, td {
+    padding: 5px;
+}
+h1
+{
+    text-align: center;
+    font-size: 25px;
+    color: whitesmoke;
+}
+
+form
+{
+    text-align: center;
+    display: block;
+    
+}
+#title
+{
+    margin: 25px;
+    border-radius: 5px;
+    color:white;
+    background-color: #131313;
+}
+#snippet
+{
+    margin: 25px;
+    border-radius: 5px;
+    color:white;
+    background-color: #131313;
+}
+#home-btn
+{
+    border-radius: 40px;
+    padding: 10px;
+    margin-left: 45%;
+    color:white;
+    background-color: #131313;
+    
+}
+
+button
+{
+    color:whitesmoke;
+}
+
+.main-entry-table > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(4)
+{
+    display: none;
+}
+#game-id
+{
+    display: none;
+}
