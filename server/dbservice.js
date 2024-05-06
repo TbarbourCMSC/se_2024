@@ -181,11 +181,12 @@ class Dbservice {
         }
     }
 
-    async updateGame(id, game, date_added, description, score){
-        console.log("IN DB, updating game")
+    async updateGame(id, description, score){
+        console.log("IN DB, updating game");
         const response = await new Promise((resolve, reject) =>{
-            const query = "UPDATE games game = ?, date_added = ?, description = ?, score = ? WHERE id = ?;";
-            connection.query(query, [game, date_added, description, score, id], (err, result) => {
+            const query = "UPDATE `games` SET `description` = ?, `score` = ? WHERE `games`.`id` = ? ";
+            connection.query(query, [description, score, id], (err, result) => {
+                console.log(err);
                 if(err)reject(new Error(err.message));
                 resolve(result.response);
             });

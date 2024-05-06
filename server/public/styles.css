@@ -1,0 +1,209 @@
+/*
+{
+    font-family: Noto Sans,sans-serif;
+    font-size: 15px;
+    background-color: #0d0d0d;
+
+}
+#main-id
+{
+    background-color: #808080;
+    color:#d9d9d9;
+    text-align: center;
+    
+}
+#attatch-point
+{
+    display: inline-block;
+}
+
+#game-obj-id
+{
+    display: inline-block;
+    background-color:#404040;
+    text-wrap:wrap;
+    margin: 15px;
+    /*padding: 15px;
+    max-width:20%;
+    max-height: 10%;
+    
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+
+#game-obj-id:hover
+{
+    color:#d9d9d9
+}
+#game-obj-title
+{
+    background-color:#ed2553; 
+    
+}
+
+#game-obj-title:hover
+{
+   
+    
+}
+#game-obj-desc
+{
+    background-color:#ed2553; 
+    
+    
+}
+#game-obj-score
+{
+    background-color:#ed2553; 
+    
+}
+
+#submit-btn
+{
+    max-width: max-content;
+    padding: 5px;
+    border-radius: 5px;
+    background-color:#ed2553; 
+    display: inline-block;
+    align-content: 50px;
+}
+
+#submit-btn:hover
+{
+    background-color:#e43a62; 
+}
+
+#title
+{
+    background-color:#404040;
+}
+#snippet
+{
+    background-color:#404040;
+}
+*/
+
+body { 
+    background-color: #DBF9FC;
+    font-size:12px
+    
+}
+
+#game-obj-id
+{ 
+        /*flex: 1 0 300px;*/
+        background-color: #fff; 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+        padding: 20px; 
+        border-radius: 10px; 
+        transition: transform 0.3s ease-in-out; 
+
+        display: inline-block; 
+        flex-wrap: wrap; 
+        margin:10px;
+
+        margin-bottom: 10px;
+
+
+        max-width: 30%;
+        text-wrap:stable;
+        text-align: center;
+} 
+
+#game-obj-id:hover{ 
+    /*transform: scale(1.05); */
+    background-color: #e6e6e6;
+} 
+
+#game-obj-deletebtn
+{
+    background-color:rgb(198, 255, 255);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#game-obj-deletebtn:hover
+{
+    background-color:rgb(9, 185, 255);
+    border-radius: 5px;
+}
+
+#game-obj-editbtn
+{
+    background-color:rgb(198, 255, 255);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#game-obj-editbtn:hover
+{
+    background-color:rgb(9, 185, 255);
+    border-radius: 5px;
+}
+
+#submit-btn
+{
+    display: inline-block;
+    margin: 10px;
+    background-color: #fff; 
+    font-size: auto;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+#submit-btn:hover
+{
+  
+    background-color: rgb(18, 142, 180);
+    
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  border: 1px solid black;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 500px;
+  padding: 15px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container input[id=edit-description], .form-container input[id=edit-score] {
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0 30px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px 20px;
+  border: 1px solid black;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover {
+  opacity: 1;
+}
+
+

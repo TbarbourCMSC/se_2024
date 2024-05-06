@@ -21,6 +21,7 @@ const dbservice = require('./dbservice'); //db service file
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended : false}));
+app.use(express.static('public'));
 /*
 
 */
@@ -31,7 +32,7 @@ app.get('/getAll', (request, response) => {
     const db = dbservice.getDBserviceInstance();
 
     const result = db.getAllData();
-    
+
     result
     .then(data => response.json({data : data}))
     .catch(err => console.log(err));
@@ -86,6 +87,7 @@ app.post('/insert/:id', (request, response) =>
 // delete game 
 app.delete('/delete/:id', (request, response) => 
 {
+    console.log("Deleting Game.");
     const { id } = request.params;
     const db = dbservice.getDBserviceInstance()
 
@@ -99,6 +101,7 @@ app.delete('/delete/:id', (request, response) =>
 // delete entry 
 app.delete('/deleteEntry/:id', (request, response) => 
 {
+    console.log("Deleting Entry");
     const { id } = request.params;
     const db = dbservice.getDBserviceInstance()
     const result = db.deleteEntryRowById(id);
@@ -106,4 +109,14 @@ app.delete('/deleteEntry/:id', (request, response) =>
     result
     .then(data => response.json({success : data}))
     .catch(err => console.log(err));
+});
+
+//edit Game
+app.patch("/updateGame", (req,res) =>{
+    console.log("Updating Game");
+    const {id, desc, score} = req.body;
+    console.log(req.body);
+    const db = dbservice.getDBserviceInstance();
+    const result = db.updateGame(id, desc, score);
+    result.then(data => res.json({success: true})).catch(err => console.log(err));
 });
