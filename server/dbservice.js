@@ -180,6 +180,17 @@ class Dbservice {
             return false;
         }
     }
+
+    async updateGame(id, game, date_added, description, score){
+        console.log("IN DB, updating game")
+        const response = await new Promise((resolve, reject) =>{
+            const query = "UPDATE games game = ?, date_added = ?, description = ?, score = ? WHERE id = ?;";
+            connection.query(query, [game, date_added, description, score, id], (err, result) => {
+                if(err)reject(new Error(err.message));
+                resolve(result.response);
+            });
+        });
+    }
 }
 
 module.exports = Dbservice; // let this class be usable in other files 
