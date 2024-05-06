@@ -267,9 +267,7 @@ function loadEntries(id)
           const back = document.createElement("h2");
           back.setAttribute("id","home-btn");
           back.innerHTML = "HOME";
-
           entryAttatch.appendChild(back);
-
     });
     
 }
@@ -331,7 +329,25 @@ function setGameLinkedList(data)
 
 function createGamePage(data)
 {
-    
     console.log(data)
 }
 
+
+
+/* THis shit below is for login stuff *./
+//Pseudo Code
+/*
+On button click (register)
+show register form
+on click register
+save entries {username, password} to the server
+*/
+/*
+on buttohn click(login)
+show login form
+on click login
+take and compare entries from login form to all on sql server
+if user & password are found then logn
+else 
+promt again
+*/
