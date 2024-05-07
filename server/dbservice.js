@@ -78,11 +78,10 @@ class Dbservice {
         console.log("insertNewEntry fired")
         try {
             //console.log(data);
-            const dateAdded = new Date();
+            //const dateAdded = new Date();
             const insertId = await new Promise((resolve, reject) => {
-                const query = "INSERT INTO games(game,date_added,description,score) VALUES (?,?,?,?)";
-
-                connection.query(query, [data["game"], dateAdded, data["description"], data["score"]], (err, result) => {
+                const query = "INSERT INTO games(game,picture,description,score) VALUES (?,?,?,?)";
+                connection.query(query, [data["game"],  data["picture"], data["description"], data["score"]], (err, result) => {
 
                     if (err) reject(new Error(err.message));
 
@@ -96,7 +95,7 @@ class Dbservice {
             return {
                 id: insertId,
                 game: data["game"],
-                dataAdded: dateAdded,
+                dataAdded: data[picture],
                 description: data["description"],
                 score: data["score"]
             }

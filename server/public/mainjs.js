@@ -7,20 +7,21 @@
 
 
 //create an object to handle game entries from table 
+var LASTFILENAME = "";
 class gameObject
 {
-    constructor(id = 0,game = '',dateAdded = '',description = '',score = 0)
+    constructor(id = 0,game = '',picture = '',description = '',score = 0)
     {
         this.id = id;
         this.game = game;
-        this.dateAdded = dateAdded;
+        this.picture = picture;
         this.description = description;
         this.score = score;
     }
 
    getId() {return this.id;}
    getGame() {return this.game;}
-   getDateAdded() {return this.dateAdded;}
+   getPicture() {return this.picture;}
    getDescription() {return this.description;}
    getScore() {return this.score;}
 }
@@ -65,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function()
             //console.log(response.data[item]['id'])
             let temp = new gameObject((response.data[item]['id']),
                                       response.data[item]['game'],
-                                      response.data[item]['date_added'],
+                                      response.data[item]['picture'],
                                       response.data[item]['description'],
                                       response.data[item]['score']);
             gameObjectList.push(temp)
@@ -96,9 +97,10 @@ document.addEventListener('DOMContentLoaded', function()
 
             //picture
             const gamePicture = document.createElement("img");
-            gamePicture.setAttribute("src", "assets/Aero Blasters (Japan).png");
+            gamePicture.setAttribute("src", "assets/"+ gameObjectList[i].getPicture());
             gamePicture.setAttribute("width", "200");
             gamePicture.setAttribute("height", "200");
+            console.log(gameObjectList[i].getPicture())
 
             mainDiv.appendChild(gamePicture);
             //description
@@ -338,6 +340,7 @@ function loadEntries(id)
             //console.log(response.data[item]['id'])
             let temp = new entryObject((response.data[item]['entry_id']),
                                       response.data[item]['entry_description'],
+                                      response.data[item]["picture"],
                                       response.data[item]['entry_score'],
                                       response.data[item]['games_id']);
                            
@@ -383,31 +386,34 @@ function submitBtn()
     const gameTitleField = document.getElementById("create-name")
     const gameDescriptionField = document.getElementById("create-description")
     const gameScoreField = document.getElementById("create-score")
+    const test = document.getElementById("picture-form")
 
-    console.log(gameTitleField)
-    console.log(gameDescriptionField)
-    console.log(gameScoreField)
+    console.log(gameTitleField.value)
+    console.log(gameDescriptionField.value)
+    console.log(gameScoreField.value)
+    console.log(LASTFILENAME)
 
 
     //get the values of the fields before deletion
     const title = gameTitleField.value
     const description = gameDescriptionField.value
     const score = gameScoreField.value;
+    const picture = LASTFILENAME;
 
     gameTitleField.value = "";
     gameDescriptionField.value = "";
     
-    if(title == "" || score == "" || description == ""){
+    if(title == "" || score == "" || description == "" || picture == ""){
         alert("Enter a valid input (populate all fields)");
     } else {
     
     //pass a manual fetch to the backend 
-    fetch('http://localhost:3000/insert', {
+    fetch('/insert', {
         headers: {
             'Content-type': 'application/json'
         },
         method: 'POST',
-        body: JSON.stringify({ game : title, description: description,score: score})
+        body: JSON.stringify({ game : title, description: description,score: score, picture: picture})
     })
     .then(response => response.json())
     .then(function()
@@ -415,6 +421,7 @@ function submitBtn()
         location.reload();
         return false;
     })
+    LASTFILENAME = "";
 }
 
    
@@ -435,7 +442,7 @@ function setGameLinkedList(data)
     //create a game object for every incoming item
     for(item in data)
     {
-        let temp = new gameObject(data[item]['id'],data[item]['game'],data[item]['date_added'],data[item]['description'],data[item]['score']);
+        let temp = new gameObject(data[item]['id'],data[item]['game'],data[item]['picture'],data[item]['description'],data[item]['score']);
         gameObjectList.append(temp)
     }
     return gameObjectList;
@@ -469,3 +476,9 @@ if user & password are found then logn
 else 
 promt again
 */
+
+function updateName(){
+    var name = document.getElementById('file');
+    console.log(name.files.item(0).name);
+    LASTFILENAME = name.files.item(0).name;
+}

@@ -15,6 +15,7 @@ const express = require('express');
 const app = express(); //instantialize app
 const cors = require('cors');
 const dotenv = require('dotenv');
+const multer = require("multer");
 dotenv.config();
 
 const dbservice = require('./dbservice'); //db service file
@@ -25,14 +26,33 @@ app.use(express.static('public'));
 /*
 
 */
+//storage stuff
+const storage = multer.diskStorage({
+    destination: function(req, file, cb){
+        cb(null, "./public/assets")
+    },
+    filename: function (req,file,cb){
+        cb(null, file.originalname)
+    }
+})
+const upload = multer({storage: storage})
+
 app.listen(process.env.PORT,() => console.log("app started"))
+
+
+app.post("/upload-picture", upload.single("picture-file"), function (req,res, next) {
+    console.log("Picture stuff");
+    console.log(JSON.stringify(req.file));
+    var response = ""
+    return res.send(response)
+})
+
 
 //read 
 app.get('/getAll', (request, response) => {
     const db = dbservice.getDBserviceInstance();
 
     const result = db.getAllData();
-
     result
     .then(data => response.json({data : data}))
     .catch(err => console.log(err));
@@ -51,16 +71,16 @@ app.get('/getAllGame/:id', (request, response) => {
 })
 app.post('/insert', (request, response) => 
 {
-    const {game, description, score} = request.body;
+    const {game, description, score, picture} = request.body;
     const db = dbservice.getDBserviceInstance();
-    const result  = db.insertNewEntry({game,description,score})
+    const result  = db.insertNewEntry({game,description,score, picture})
 
     result
     .then(data => response.json({data: data}))
     //.then(err => console.log(err.message))
 
 });
-//get a game and it's entries (DON'T USE)
+//t a game and it's entries (DON'T USE)
 app.get('/games/:id',(request,response)=>
 {
 
@@ -78,7 +98,7 @@ app.post('/insert/:id', (request, response) =>
     console.log(entry_description,entry_score,games_id);
 
     const db = dbservice.getDBserviceInstance();
-    const result  = db.insertNewGameEntry( {entry_description, entry_score, games_id})
+    const result  = db.insertNewGameEntry( {entry_description, entry_score, games_id, picture})
     result
     .then(data => response.json({data: data}))
     //.then(err => console.log(err.message))

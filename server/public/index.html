@@ -8,13 +8,15 @@
     </head>
     <body>
         <div class="NAVBAR">
-            <a href="#home">Home</a>
-            <a href="#news">About</a>
+            <a href="/index.html">Home</a>
+            <a href="/about.html">About</a>
             <a button id = "show-create-btn">Create</a>
-            <a href="#login">login</a>  
+           <!-- <a href="#login">login</a> -->
             
         </div>
         <br>
+
+        
         <main>
             <p id = "attatch-point"></p>
             <p id = "form-attatch-point"></p>
@@ -32,7 +34,6 @@
                 <button id="edit-cancel-btn" class="btn cancel">Close</button>
             </div>
         </div>
-
         <div class="form-popup" id="createForm">
             <div class="form-container">
                 <h1>Create Entry</h1>
@@ -42,11 +43,15 @@
                 <input id="create-description" placeholder="Enter Short Description" name="description" autocomplete="off" >
                 <label for="score"><b>Score</b></label>
                 <input id= "create-score" type = "number" step = "1" placeholder="Enter New Score" name="score" autocomplete="off" >
-                <button id="create-btn" class="btn">Create!</button>
+                <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+                <label>Upload Picture</label>
+                <form id = "picture-form" method="POST" action="/upload-picture" enctype="multipart/form-data" target = "dummyframe">   
+                    <input id = "file" type="file" name="picture-file" required autocomplete="off" onchange="updateName()" />    
+                    <input type="submit" value="Upload" />
+                </form>
+                <button id="create-btn" type= "submit" value = "Upload" class="btn">Create!</button>
                 <button id="create-cancel-btn" class="btn cancel">Close</button>
             </div>
         </div>
-
-
     </body>
 </html>
