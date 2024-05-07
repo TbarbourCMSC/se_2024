@@ -93,21 +93,30 @@ document.addEventListener('DOMContentLoaded', function()
             gameTitle.innerHTML = gameObjectList[i].getGame()
 
             mainDiv.appendChild(gameTitle);
+
+            //picture
+            const gamePicture = document.createElement("img");
+            gamePicture.setAttribute("src", "assets/Aero Blasters (Japan).png");
+            gamePicture.setAttribute("width", "200");
+            gamePicture.setAttribute("height", "200");
+
+            mainDiv.appendChild(gamePicture);
             //description
             const gameDescription =  document.createElement("h3");
             gameDescription.setAttribute("id", "game-obj-desc");
-            gameDescription.classList.add("game-obj-desc");
+            gameDescription.innerText = "This is a test";
             gameDescription.innerHTML = gameObjectList[i].getDescription()
 
             mainDiv.appendChild(gameDescription);
 
             //score 
-            const gameScore =  document.createElement("h2");
+            const gameScore = document.createElement("h2");
             gameScore.setAttribute("id", "game-obj-score");
             gameScore.classList.add("game-obj-score");
-            gameScore.innerHTML = gameObjectList[i].getScore();
+            gameScore.innerHTML = "Score: " + gameObjectList[i].getScore();
 
             mainDiv.appendChild(gameScore);
+
 
             //delete button
             const deleteBtn = document.createElement("h2");
@@ -388,6 +397,9 @@ function submitBtn()
     gameTitleField.value = "";
     gameDescriptionField.value = "";
     
+    if(title == "" || score == "" || description == ""){
+        alert("Enter a valid input (populate all fields)");
+    } else {
     
     //pass a manual fetch to the backend 
     fetch('http://localhost:3000/insert', {
@@ -403,6 +415,7 @@ function submitBtn()
         location.reload();
         return false;
     })
+}
 
    
    
