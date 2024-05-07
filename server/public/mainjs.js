@@ -130,8 +130,8 @@ document.addEventListener('DOMContentLoaded', function()
         }
      
     })
-    //build the forms for submission
-    .then(function ()
+    //build the forms for submission -- now static
+   /* .then(function () 
     {
         const attatchpoint = document.getElementById("form-attatch-point");
 
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function()
 
         attatchpoint.appendChild(form)
 
-    })
+    })*/
     
     
 });
@@ -180,10 +180,10 @@ document.addEventListener('click',function(event)
         loadEntries(id);
     }
 
-    else if(event.target.id ==='submit-btn')
+    /*else if(event.target.id ==='submit-btn') Deprecated
     {
         submitBtn();
-    }
+    }*/
 
     else if(event.target.id === 'game-obj-deletebtn')
     {
@@ -203,13 +203,28 @@ document.addEventListener('click',function(event)
         document.getElementById("myForm").style.display = "none";
     }
 
+    else if(event.target.id === "create-cancel-btn"){
+        document.getElementById("createForm").style.display = "none";
+    }
+
     //for the submit button
     else if(event.target.id === "edit-update-btn"){
         console.log(document.querySelector("#edit-update-btn").dataset.id);
         updateGame();
+    }
 
+    else if(event.target.id === "show-create-btn")
+    {
+        console.log("SHOW THE FORM!");
+        showCreateForm();
     }
     
+    else if(event.target.id === "create-btn")
+    {
+        console.log("CREATING!");
+        submitBtn();
+    }
+
     else if(event.target.id ==- 'home-btn')
     {
         
@@ -356,16 +371,22 @@ function submitBtn()
 {
     console.log("clicked button");
     //get the input fields and clear them
-    const gameTitleField = document.getElementById("title")
-    const GameDescriptionField = document.getElementById("snippet")
-  
+    const gameTitleField = document.getElementById("create-name")
+    const gameDescriptionField = document.getElementById("create-description")
+    const gameScoreField = document.getElementById("create-score")
+
+    console.log(gameTitleField)
+    console.log(gameDescriptionField)
+    console.log(gameScoreField)
+
+
     //get the values of the fields before deletion
     const title = gameTitleField.value
-    const description = GameDescriptionField.value
-    const score = 0;
+    const description = gameDescriptionField.value
+    const score = gameScoreField.value;
 
     gameTitleField.value = "";
-    GameDescriptionField.value = "";
+    gameDescriptionField.value = "";
     
     
     //pass a manual fetch to the backend 
@@ -414,6 +435,9 @@ function createGamePage(data)
 }
 
 
+function showCreateForm(){
+    document.getElementById("createForm").style.display = "block"; 
+}
 
 /* THis shit below is for login stuff *./
 //Pseudo Code

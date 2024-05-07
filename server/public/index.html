@@ -4,17 +4,23 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="styles.css">
-        <title>web app</title>
+        <title>Game Rating [Basic Crud]</title>
     </head>
     <body>
+        <div class="NAVBAR">
+            <a href="#home">Home</a>
+            <a href="#news">About</a>
+            <a button id = "show-create-btn">Create</a>
+            <a href="#login">login</a>  
+            
+        </div>
+        <br>
         <main>
-            <h1 id = "main-id">A name here</h1>
             <p id = "attatch-point"></p>
             <p id = "form-attatch-point"></p>
             <p id = "entry-attatch-point"></p>
         </main>
         <script src="mainjs.js"></script>
-
         <div class="form-popup" id="myForm">
             <div class="form-container">
                 <h1>Edit Entry</h1>
@@ -23,8 +29,24 @@
                 <label for="score"><b>Score</b></label>
                 <input id = "edit-score" type = "number" step = "1" placeholder="Enter New Score" name="score" autocomplete="off" >
                 <button id="edit-update-btn" class="btn">Update!</button>
-                <button id="edit-cancel-btn" class="btn cancel" onclick="closeForm()">Close</button>
+                <button id="edit-cancel-btn" class="btn cancel">Close</button>
             </div>
         </div>
+
+        <div class="form-popup" id="createForm">
+            <div class="form-container">
+                <h1>Create Entry</h1>
+                <label for="Game Name"><b>Name</b></label>
+                <input id="create-name" placeholder="Enter Name" name="name" autocomplete="off" >
+                <label for="description"><b>Description</b></label>
+                <input id="create-description" placeholder="Enter Short Description" name="description" autocomplete="off" >
+                <label for="score"><b>Score</b></label>
+                <input id= "create-score" type = "number" step = "1" placeholder="Enter New Score" name="score" autocomplete="off" >
+                <button id="create-btn" class="btn">Create!</button>
+                <button id="create-cancel-btn" class="btn cancel">Close</button>
+            </div>
+        </div>
+
+
     </body>
 </html>
