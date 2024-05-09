@@ -96,6 +96,7 @@ margin-bottom: 10px;
 max-width: 30%;
 text-wrap:stable;
 text-align: center;
+min-width: 250px;
 }
 #game-obj-id:hover{
 /*transform: scale(1.05); */
@@ -154,7 +155,7 @@ padding: 15px;
 background-color: white;
 }
 /* Full-width input fields */
-.form-container input[id=edit-description], .form-container input[id=edit-score], input[id=create-description], .form-container input[id=create-score], .form-container input[id=create-name], .form-container form[id=picture-form] {
+.form-container input[id=edit-description], .form-container input[id=edit-score], input[id=create-description], .form-container input[id=create-score], .form-container input[id=create-name], .form-container form[id=picture-form], .form-container form[id=login-user] {
 width: 100%;
 padding: 5px;
 margin: 5px 0 30px 0;

@@ -11,11 +11,9 @@
             <a href="/index.html">Home</a>
             <a href="/about.html">About</a>
             <a button id = "show-create-btn">Create</a>
-           <!-- <a href="#login">login</a> -->
-            
+           <!-- <a button id ="login" onclick="document.getElementById('login-window').style.display='block'">login</a> -->
         </div>
         <br>
-
         
         <main>
             <p id = "attatch-point"></p>
@@ -45,13 +43,25 @@
                 <input id= "create-score" type = "number" step = "1" placeholder="Enter New Score" name="score" autocomplete="off" >
                 <iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
                 <label>Upload Picture</label>
-                <form id = "picture-form" method="POST" action="/upload-picture" enctype="multipart/form-data" target = "dummyframe">   
-                    <input id = "file" type="file" name="picture-file" required autocomplete="off" onchange="updateName()" />    
-                    <input type="submit" value="Upload" />
+                <form id = "picture-form" method="POST" action="/upload-picture" enctype="multipart/form-data" target = "dummyframe">
+                    <input id = "file" type="file" name="picture-file" required autocomplete="off" onchange="updateName()" />
+                    <input type="submit" value="Upload" onclick="updateClicked()" />
                 </form>
                 <button id="create-btn" type= "submit" value = "Upload" class="btn">Create!</button>
                 <button id="create-cancel-btn" class="btn cancel">Close</button>
             </div>
         </div>
+        <!--
+        <div class="form-popup" id="login-window">
+            <div class="form-container">
+                <h1>Login</h1>
+                <label for="Login"><b>Login</b></label>
+                <input id="create-name" placeholder="Enter Username" name="description" autocomplete="off" >
+                <label for="Password"><b>Password</b></label>
+                <input id = "edit-score" placeholder="Enter Password" name="score" autocomplete="off" >
+                <button id="edit-update-btn" class="btn">Login!</button>
+                <button id="edit-cancel-btn" class="btn cancel">Close</button>
+            </div>
+        </div> -->
     </body>
 </html>
