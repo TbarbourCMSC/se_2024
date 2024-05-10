@@ -202,6 +202,29 @@ color: black;
 background-color: #333;
 color: #333;
 }
+.NAVBAR .search-container input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
+.NAVBAR .search-container button[type=submit] {
+  float: right;
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background-color: #ddd;
+  color: black;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.NAVBAR .search-container button:hover {
+  background: #ccc;
+}
 
 #animation-bg{
 	width: 100%;
