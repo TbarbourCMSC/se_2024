@@ -482,3 +482,84 @@ function updateName(){
     console.log(name.files.item(0).name);
     LASTFILENAME = name.files.item(0).name;
 }
+
+
+const searchBar = document. getElementById("searchBar");
+const searchResult = document.getElementById('searchResult');
+console.log(searchBar);
+searchBar.addEventListener("keyup", (e)=>{
+    console.log(e.target.value);
+    const searchString = e.target.value;
+
+    const filteredGames = gameObjectList.filter( (game) => {
+        return game.game.includes(searchString);
+    })
+    
+      const attatchpoint = document.getElementById("attatch-point"); //all elements will be attatched here
+        
+        //create the html here for the page
+        
+      while(attatchpoint.firstChild)
+        attatchpoint.removeChild(attatchpoint.firstChild);
+
+        for(let i = 0; i < filteredGames.length;i++)
+        {
+            console.log(filteredGames[i])
+            const mainDiv = document.createElement("div");
+            mainDiv.classList.add("game-obj-div");
+            mainDiv.setAttribute("id", "game-obj-id");
+
+        
+            //main title
+            const gameTitle = document.createElement("h2");
+            gameTitle.classList.add("game-obj-title");
+            gameTitle.setAttribute("id", "game-obj-title");
+            gameTitle.innerHTML = filteredGames[i].getGame()
+
+            mainDiv.appendChild(gameTitle);
+
+            //picture
+            const gamePicture = document.createElement("img");
+            gamePicture.setAttribute("src", "assets/"+ filteredGames[i].getPicture());
+            gamePicture.setAttribute("width", "200");
+            gamePicture.setAttribute("height", "200");
+            console.log(filteredGames[i].getPicture())
+
+            mainDiv.appendChild(gamePicture);
+            //description
+            const gameDescription =  document.createElement("h3");
+            gameDescription.setAttribute("id", "game-obj-desc");
+            gameDescription.innerText = "This is a test";
+            gameDescription.innerHTML = filteredGames[i].getDescription()
+
+            mainDiv.appendChild(gameDescription);
+
+            //score 
+            const gameScore = document.createElement("h2");
+            gameScore.setAttribute("id", "game-obj-score");
+            gameScore.classList.add("game-obj-score");
+            gameScore.innerHTML = "Score: " + filteredGames[i].getScore();
+
+            mainDiv.appendChild(gameScore);
+
+
+            //delete button
+            const deleteBtn = document.createElement("h2");
+            deleteBtn.setAttribute("id", "game-obj-deletebtn");
+            deleteBtn.classList.add("game-obj-deletebtn");
+            deleteBtn.innerHTML = "DELETE"
+
+            mainDiv.appendChild(deleteBtn);
+
+            //edit button
+            const editBtn = document.createElement("h2");
+            editBtn.setAttribute("id", "game-obj-editbtn");
+            editBtn.classList.add("game-obj-editbtn");
+            editBtn.innerHTML = "EDIT"
+
+            mainDiv.appendChild(editBtn);
+
+            attatchpoint.appendChild(mainDiv);
+        }
+
+});
